@@ -2,7 +2,8 @@ DF-Peek
 =======
 
 watches Dwarf Fortress' logfile and launches external app when a regex matches. 
-currently supports color highlighted output and beeping on death messages or messages that pauses the game.watches Dwarf Fortress' logfile and launches external app when a regex matches. currently supports color highlighted output and beeping on death messages or messages that pauses the game.
+currently supports color highlighted output and beeping on death messages or messages that pauses the game.
+
 
 it's simple: just add a line to df-log-filter.pl with a regex and a command, which will be executed when the regex matches.
 actual textline is then passed to the app.

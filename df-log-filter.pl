@@ -8,12 +8,20 @@ use File::Basename;
 my $script = dirname(abs_path($0)) . "/print-colored.pl";
 my $beep = " albeep";
 my @conditions = (
+#spam info
 	["^x([0-9])+", ""],
+	["has created a masterpiece", ""],
+	["has engraved a masterpiece", ""],
+	["has become a", ""],	
+#job cancellation	
+	["Drop-off inaccessible", ""],
 	["Job item misplaced", ""],
 	["Item inaccessible", ""],
 	["Equipment mismatch", ""],
+	[" Getting something to ", ""],
 	["Needs unrotten body part", ""],
-	["has created a masterpiece", ""],
+	["Seeking Infant", ""],
+#sparring/fighting	
 	["but the shot is blocked", ""],
 	[" lightly tapping ", ""],
 	["charges at", ""],
@@ -22,6 +30,7 @@ my @conditions = (
 	["collides", ""],
 	["knocked over", ""],
 	["stands up", ""],
+	[" bounces ", ""],
 	["looks sick", ""],
 	["even sick", ""],
 	["stunned", ""],
@@ -39,34 +48,41 @@ my @conditions = (
 	[" blocks ", ""],
 	[" loses hold ", ""],
 	[" vomit", ""],
-	["A tendon .+ torn", ""],
+	["A tendon (.+) torn", ""],
 	["lodged firmly", ""],
-	["has become a", ""],
-	["Drop-off inaccessible", ""],
+#deadly strikes
+	["tearing the brain", $script . " green"],
+	["lower body(.+)and the severed part sails off in an arc", $script . " green"],
+	["head(.+)and the severed part sails off in an arc", $script . " green"],	
+#danger/death	
+	["stolen", $script . " magenta"],
+	["Dangerous terrain", $script . $beep . " red"],	
 	["^An ambush! ", $script . $beep . " red"],
 	["ile force of ", $script . $beep . " red"],
 	["Interrupted by", $script . $beep . " red"],
-	["has grown to", $script . " blue"],
 	["drowned", $script . $beep . " red"],
 	[" died ", $script . $beep . " red"],
-	["stolen", $script . " magenta"],
+	["^The (.+) struck", $script . " magenta"],	#indicates that an unnamed being has been slaughtered/killed
+	["struck", $script . $beep ." red"],	#indicates that a named being has been struck down, most likely of our population.
+#game pausing/important events	
+	#merchants
 	["will be leaving soon", $script . $beep . " yellow"],
 	["embarked", $script . " yellow"],
 	["arrived", $script . $beep . " yellow"],
-	["has been completed", $script . " cyan"],
-	["tearing the brain", $script . " green"],
-	["lower body(.+)and the severed part sails off in an arc", $script . " green"],
-	["head(.+)and the severed part sails off in an arc", $script . " green"],
-	["^The (.+) struck", ""],
-	["struck", $script . $beep ." red"],
+	#moods
 	[" withdraws from society", $script . $beep . " white"],
 	[" fey mood", $script . $beep . " white"],
 	[" posessed", $script . $beep . " white"],
 	[" claimed ", $script . $beep . " white"],
 	[" begun a mysterious construction", $script . $beep . " white"],
+	#damn, more dwarfes/pets -> lower fps.
 	[" has given birth to a (girl|boy)", $script . $beep . " blue"],
 	[" has given birth to a", $script . " blue"],
-	[" suspended the",  $script . " yellow"]
+#other interesting info	
+	["has mandated ", $script . $beep . " yellow"],
+	["has grown to", $script . " blue"],
+	["has been completed", $script . " cyan"],
+	[" suspended the",  $script . $beep . " yellow"]
 );
 
 while (<>) {

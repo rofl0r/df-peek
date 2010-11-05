@@ -19,11 +19,12 @@ my $gray = "\033[90m";
 my $cend = "\033[0m";
 
 my $colsel = shift(@ARGV);
+my $beep = 0;
 if ($colsel eq "beep") {
-	print "\a";
+	$beep = 1;
 	$colsel = shift(@ARGV);
 } elsif ($colsel eq "albeep") {
-	system($beepapp);
+	$beep = 2;
 	$colsel = shift(@ARGV);
 }
 	
@@ -49,3 +50,8 @@ if ($colsel eq "blue") {
 print $color;
 print join(" ", @ARGV);
 print $cend;
+
+if ($beep) {
+	print "\a" if($beep == 1);
+	system($beepapp) if($beep == 2);
+}

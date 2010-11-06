@@ -21,10 +21,20 @@ my @conditions = (
 	[" Getting something to ", ""],
 	["Needs unrotten body part", ""],
 	["Seeking Infant", ""],
+#deadly strikes
+	["tearing the brain", $script . " green"],
+	["lower body(.+)and the severed part sails off in an arc", $script . " green"],
+	["head(.+)and the severed part sails off in an arc", $script . " green"],	
 #sparring/fighting	
 	["but the shot is blocked", ""],
 	[" lightly tapping ", ""],
 	["charges at", ""],
+	["latches on firmly", ""],
+	[" bites ", ""],
+	[" shakes ", ""],
+	[" scratches ", ""],
+	[" tearing the fat", ""],
+	[" bruising the ", ""],
 	["looks surprised", ""],
 	["counterstrikes", ""],
 	["collides", ""],
@@ -32,7 +42,9 @@ my @conditions = (
 	["stands up", ""],
 	[" bounces ", ""],
 	["looks sick", ""],
-	["even sick", ""],
+	["even more sick", ""],
+	["trouble breathing", ""],
+	["falls over", ""],
 	["stunned", ""],
 	["onslaught", ""],
 	[" tangle together", ""],
@@ -48,12 +60,9 @@ my @conditions = (
 	[" blocks ", ""],
 	[" loses hold ", ""],
 	[" vomit", ""],
-	["A tendon (.+) torn", ""],
+	[" twists", ""],
+	[" tendon (.+) torn", ""],
 	["lodged firmly", ""],
-#deadly strikes
-	["tearing the brain", $script . " green"],
-	["lower body(.+)and the severed part sails off in an arc", $script . " green"],
-	["head(.+)and the severed part sails off in an arc", $script . " green"],	
 #danger/death	
 	["stolen", $script . " magenta"],
 	["Dangerous terrain", $script . $beep . " red"],	
@@ -63,8 +72,11 @@ my @conditions = (
 	["drowned", $script . $beep . " red"],
 	[" died ", $script . $beep . " red"],
 	["^The (.+) struck", $script . " magenta"],	#indicates that an unnamed being has been slaughtered/killed
+	["^You have struck", $script . " yellow"],	# some stone has been discovered
 	["struck", $script . $beep ." red"],	#indicates that a named being has been struck down, most likely of our population.
 #game pausing/important events	
+	["Praise the miners", $script . $beep . " green"], #adamantine discovered
+	[" has bestowed the name ", $script . $beep . " yellow"], #named a weapon
 	#merchants
 	["will be leaving soon", $script . $beep . " yellow"],
 	["embarked", $script . " yellow"],
@@ -75,11 +87,13 @@ my @conditions = (
 	[" posessed", $script . $beep . " white"],
 	[" claimed ", $script . $beep . " white"],
 	[" begun a mysterious construction", $script . $beep . " white"],
+	[" has created ", $script . $beep . " white"],
 	#damn, more dwarfes/pets -> lower fps.
 	[" has given birth to a (girl|boy)", $script . $beep . " blue"],
 	[" has given birth to a", $script . " blue"],
 #other interesting info	
 	["has mandated ", $script . $beep . " yellow"],
+	["has imposed a ban ", $script . $beep . " yellow"],
 	["has grown to", $script . " blue"],
 	["has been completed", $script . " cyan"],
 	[" suspended the",  $script . $beep . " yellow"]

@@ -2,10 +2,6 @@
 
 use strict;
 use warnings;
-use Cwd 'abs_path';
-use File::Basename;
-
-my $beepapp = dirname(abs_path($0)) . "/beep";
 
 my $default = "\033[98m";
 my $white = "\033[97m";
@@ -19,14 +15,6 @@ my $gray = "\033[90m";
 my $cend = "\033[0m";
 
 my $colsel = shift(@ARGV);
-my $beep = 0;
-if ($colsel eq "beep") {
-	$beep = 1;
-	$colsel = shift(@ARGV);
-} elsif ($colsel eq "albeep") {
-	$beep = 2;
-	$colsel = shift(@ARGV);
-}
 	
 my $color = $default;
 if ($colsel eq "blue") {
@@ -50,8 +38,3 @@ if ($colsel eq "blue") {
 print $color;
 print join(" ", @ARGV);
 print $cend;
-
-if ($beep) {
-	print "\a" if($beep == 1);
-	system($beepapp) if($beep == 2);
-}

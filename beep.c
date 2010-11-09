@@ -4,12 +4,15 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 
+#include <errno.h>
 #include <time.h>
 int msleep(long millisecs) {
 	struct timespec req, rem;
 	req.tv_sec = millisecs / 1000;
 	req.tv_nsec = (millisecs % 1000) * 1000 * 1000;
-	return nanosleep(&req, &rem);
+	int ret;
+	while((ret = nanosleep(&req, &rem)) == -1 && errno == EINTR) req = rem;
+	return ret;	
 }
 
 int main() {
@@ -48,6 +51,12 @@ int main() {
 	float delay = ((float)numsamples/(float)samplerate) * 1000.f;
 	
 	msleep(((long)(delay))*2);
+	ALint state;
+	do {
+		msleep(1);
+		alGetSourcei(source, AL_SOURCE_STATE, &state);
+	} while(alGetError()==AL_NO_ERROR && state==AL_PLAYING);
+	
 	alSourceStop(source);
 
 	alDeleteSources(1, &source);

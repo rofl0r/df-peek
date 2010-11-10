@@ -13,7 +13,7 @@ usage: tail -f ../df16/gamelog.txt | ~/df-peek/df-log-filter.pl
 
 included are a color highlight script and a simple beep app (uses openal).
 
-print-colored.pl [beep|albeep] [white|red|green|blue|yellow|magenta|cyan] text to print
+print-colored.pl [white|red|green|blue|yellow|magenta|cyan] text to print
 
 beep uses the pc-speaker, while albeep runs the beep executable which will be compiled when running "make"
 

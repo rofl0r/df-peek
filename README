@@ -16,3 +16,6 @@ included are a color highlight script and a simple beep app (uses openal).
 print-colored.pl [beep|albeep] [white|red|green|blue|yellow|magenta|cyan] text to print
 
 beep uses the pc-speaker, while albeep runs the beep executable which will be compiled when running "make"
+
+to use the unpause feature, you have to download http://github.com/rofl0r/libxauto and run "make tools". then copy the 2 libxauto_* executables into this directory.
+

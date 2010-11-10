@@ -26,6 +26,7 @@ my @conditions = (
 	["Equipment mismatch", [""]],
 	[" Getting something to ", [""]],
 	["Needs unrotten body part", [""]],
+	["Needs butcherable unrotten nearby item", [""]],
 	["Seeking Infant", [""]],
 #deadly strikes
 	["tearing the brain", [$script . " green"]],

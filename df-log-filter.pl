@@ -81,7 +81,7 @@ my @conditions = (
 	["drowned", [$script . " red", $beep]],
 	[" died ", [$script . " red", $beep]],
 	["^The (.+) struck", [$script . " magenta"]],	#indicates that an unnamed being has been slaughtered/killed
-	["^You have struck", [$script . " yellow", $beep]],	# some stone has been discovered
+	["^You have struck", [$script . " yellow"]],	# some stone has been discovered
 	["struck", [$script . " red", $beep]],	#indicates that a named being has been struck down, most likely of our population.
 	[" is throwing a tantrum", [$script . " red", $beep]],
 	[" has gone berserk", [$script . " red", $beep]],

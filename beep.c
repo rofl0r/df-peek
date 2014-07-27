@@ -3,6 +3,7 @@
 
 #include <AL/al.h>
 #include <AL/alc.h>
+//RcB: LINK "-lopenal"
 
 #include <errno.h>
 #include <time.h>

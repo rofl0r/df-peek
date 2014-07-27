@@ -12,7 +12,7 @@ int msleep(long millisecs) {
 	req.tv_nsec = (millisecs % 1000) * 1000 * 1000;
 	int ret;
 	while((ret = nanosleep(&req, &rem)) == -1 && errno == EINTR) req = rem;
-	return ret;	
+	return ret;
 }
 
 int main() {
@@ -47,16 +47,16 @@ int main() {
 
 	alSourcePlay(source);
 	if (alGetError()) return 1;
-	
+
 	float delay = ((float)numsamples/(float)samplerate) * 1000.f;
-	
+
 	msleep(((long)(delay))*2);
 	ALint state;
 	do {
 		msleep(1);
 		alGetSourcei(source, AL_SOURCE_STATE, &state);
 	} while(alGetError()==AL_NO_ERROR && state==AL_PLAYING);
-	
+
 	alSourceStop(source);
 
 	alDeleteSources(1, &source);
@@ -68,5 +68,4 @@ int main() {
 	alcCloseDevice(device);
 
 	return 0;
-
 }
